@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="18pt"
+          android:text="BTC ROADLINES"
+          android:layout_gravity="center"
+          android:textColor="@android:color/black"/>
+
+      <EditText
+          android:id="@+id/username"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ems="@android:integer/config_longAnimTime"
+          android:inputType="textPersonName"
+          android:textSize="12pt"
+          android:hint="Username" />
+      <EditText
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:ems="@android:integer/config_longAnimTime"
+          android:inputType="textPassword"
+          android:hint="Password"
+          android:textSize="12pt"
+          android:id="@+id/password"/>
+      <Button
+          android:layout_width="150dp"
+          android:layout_height="60dp"
+          android:layout_gravity="center"
+          android:text="LOGIN"
+          android:textColor="@android:color/black"
+          android:textSize="10pt"
+          android:onClick="login"/>
+  </LinearLayout>
+
+
+</android.support.v7.widget.LinearLayoutCompat>
