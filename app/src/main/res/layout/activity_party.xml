@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PartyActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PARTY DETAILS"
+                android:textSize="15pt"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PORT=Vishakapatnam"
+                android:textSize="15pt"
+                android:layout_gravity="center"
+                android:id="@+id/port"
+                android:textColor="@android:color/black"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LR No:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="LR No"
+                    android:textSize="10pt"
+                    android:id="@+id/lrno"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PARTY NAME:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="PARTY NAME"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:id="@+id/partyname"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PARTY ADRESS:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="PARTY ADRESS"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:id="@+id/partyadress"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTACT NO"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CONTACT NO"
+                    android:inputType="phone"
+                    android:textSize="10pt"
+                    android:id="@+id/partycontact"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WEIGHT:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="WEIGHT"
+                    android:inputType="numberDecimal"
+                    android:textSize="10pt"
+                    android:id="@+id/weight"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RATE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="RATE"
+                    android:inputType="numberDecimal"
+                    android:textSize="10pt"
+                    android:id="@+id/rate"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CASH:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CASH PAID"
+                    android:inputType="number"
+                    android:textSize="10pt"
+                    android:id="@+id/cashpaid"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SECURITY:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="SECURITY"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:id="@+id/security"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOADING CHARGE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="loading charge"
+                    android:inputType="number"
+                    android:textSize="10pt"
+                    android:id="@+id/loadingcharge"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DIESEL CHARGE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DIESEL"
+                    android:inputType="number"
+                    android:textSize="10pt"
+                    android:id="@+id/diesel"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total="
+                android:textSize="10pt"
+                android:textColor="@android:color/black"
+                android:id="@+id/total"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Balance="
+                android:textSize="10pt"
+                android:id="@+id/balance"
+                android:textColor="@android:color/black"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calculate"
+                    android:layout_weight="1"
+                    android:onClick="calculateTandB"
+
+                    android:textSize="10pt"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SUBMIT ENTRY"
+                    android:layout_weight="1"
+                    android:onClick="submit"
+                    android:textSize="10pt"
+
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.v7.widget.LinearLayoutCompat>
