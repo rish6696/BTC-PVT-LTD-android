@@ -1,0 +1,1 @@
+mongoexport -h ds143342.mlab.com:43342 -d heroku_svj3zwsf -c userports -u heroku_svj3zwsf  -p rgfjj7agqpcq54ikuv3lghidul -o userports.json

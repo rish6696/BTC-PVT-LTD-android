@@ -1,7 +1,8 @@
 package com.example.btcroadlinesprivateltd;
 
 public class LoginClass {
-    String username,password,status;
+    String username,password,_id;
+    Boolean status;
 
     public LoginClass(String username, String password) {
         this.username = username;
@@ -13,7 +14,8 @@ public class LoginClass {
         return "LoginClass{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", status='" + status + '\'' +
+                ", _id='" + _id + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

@@ -1,36 +1,45 @@
 package com.example.btcroadlinesprivateltd;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PartyActivity extends AppCompatActivity {
+public class PartyActivity extends AppCompatActivity  {
 
     ApiInterface apiInterface;
 
-    TextView lrnum,pname,contactnumber,wiegh,ratee,cashp,desel,securityy,totall,balancee,portname,loadingc;
-    float rate=-1,weight=-1,cash=-1,diesel=-1,security=-1,balance=-1,total=-1,loadingcharge=-1;
-    String partyphone,lrnumber,partyname;
+    static TextView lrnum,pname,contactnumber,wiegh,ratee,cashp,desel,securityy,totall,balancee,portname,loadingc,padress;
+     float rate=-1,weight=-1,cash=-1,diesel=-1,security=-1,balance=-1,total=-1,loadingcharge=-1;
+     String partyphone,lrnumber,partyname,partyadress;
+    SharedPreferences sharedPreferences;
+    static partybd pbd;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_party);
+        sharedPreferences=this.getSharedPreferences("com.example.btcroadlinesprivateltd", Context.MODE_PRIVATE);
         portname=(TextView)findViewById(R.id.port);
-        portname.setText(MainActivity.portname);
+        portname.setText("Port="+MainActivity.portname);
+        padress=(TextView)findViewById(R.id.partyadress);
 
         lrnum=(TextView)findViewById(R.id.lrno);
         pname=(TextView)findViewById(R.id.partyname);
@@ -107,63 +116,88 @@ public class PartyActivity extends AppCompatActivity {
     }
     public void submit(View view) {
 
-//        lrnumber=lrnum.getText().toString();
-//        partyphone=contactnumber.getText().toString();
-//        partyname=pname.getText().toString();
-//
-//
-//        if(lrnumber.length()<=0)
-//        {
-//            lrnum.setError("INVALID");
-//            lrnum.requestFocus();
-//        }
-//        else if (partyname.length()<=0)
-//        {
-//            pname.setError("INVALID");
-//            pname.requestFocus();
-//
-//        }
-//        else if(partyphone.length()<=0)
-//        {
-//            contactnumber.setError("INVALID");
-//            contactnumber.requestFocus();
-//        }
-//        else if (!validateInfo()){
-//
-//
-//        }
-//        else {
-//            new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert)
-//                    .setTitle("Please check the details before filling Truck details").setMessage("LR no:"+lrnumber+"\n"+"Party name:"+partyname+"\n"+"Party phno:"+partyphone+"\n"+"Weight:"+weight+"\n"+"Rate:"+rate+"\n"+"Cash:"+cash+"\n"+"Diesel:"+diesel+"\n"+"Security:"+security+"\n"+"Loading charge:"+loadingcharge+"\n"+"Balance:"+balance)
-//                    .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            Intent intent=new Intent(getApplicationContext(),TruckActivity.class);
-//                            startActivity(intent);
-//                        }
-//                    }).setNegativeButton("Edit",null).show();
-//
-//        }
-
-        Sampleclass sampleclass=new Sampleclass("rishabh");
-        Call<List<Sampleclass>> call=apiInterface.getObject(sampleclass);
-        call.enqueue(new Callback<List<Sampleclass>>() {
-            @Override
-            public void onResponse(Call<List<Sampleclass>> call, Response<List<Sampleclass>> response) {
-                Log.i("viratkohli",response.body().toString());
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Sampleclass>> call, Throwable t) {
-                Log.i("viratkohli",t.getMessage());
-
-            }
-        });
+        lrnumber=lrnum.getText().toString();
+        partyphone=contactnumber.getText().toString();
+        partyname=pname.getText().toString();
+        partyadress=padress.getText().toString();
 
 
+        if(lrnumber.length()<=0)
+        {
+            lrnum.setError("INVALID");
+            lrnum.requestFocus();
+        }
+        else if (partyname.length()<=0)
+        {
+            pname.setError("INVALID");
+            pname.requestFocus();
+
+        }
+        else if(partyphone.length()<=0)
+        {
+            contactnumber.setError("INVALID");
+            contactnumber.requestFocus();
+        }
+        else if(partyadress.length()<=0)
+        {
+            padress.setError("INVALID");
+            padress.requestFocus();
+        }
+        else if (!validateInfo()){
 
 
+        }
+        else {
+            new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Please check the details before filling Truck details").setMessage("LR no:"+lrnumber+"\n"+"Party name:"+partyname+"\n"+"Party Adress:"+partyadress+"\n"+"Party phno:"+partyphone+"\n"+"Weight:"+weight+"\n"+"Rate:"+rate+"\n"+"Cash:"+cash+"\n"+"Diesel:"+diesel+"\n"+"Security:"+security+"\n"+"Loading charge:"+loadingcharge+"\n"+"Balance:"+balance)
+                    .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            pbd=new partybd(lrnumber,partyname,partyadress
+                                    ,partyphone,weight,rate,loadingcharge,security,diesel,cash,total,balance
+                            );
+                            Intent intent=new Intent(getApplicationContext(),TruckActivity.class);
+                            startActivity(intent);
 
+                        }
+                    }).setNegativeButton("Edit",null).show();
+
+        }
+
+    }
+    public static void ResetFields()
+    {
+        lrnum.setText("");
+        pname.setText("");
+        padress.setText("");
+        contactnumber.setText("");
+        wiegh.setText("");
+        ratee.setText("");
+        loadingc.setText("");
+        securityy.setText("");
+        desel.setText("");
+        cashp.setText("");
+        totall.setText("");
+        balancee.setText("");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mymenu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.logout)
+        {
+            sharedPreferences.edit().putString("portname","null").apply();
+            sharedPreferences.edit().putBoolean("status",false).apply();
+            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+        return false;
     }
 }

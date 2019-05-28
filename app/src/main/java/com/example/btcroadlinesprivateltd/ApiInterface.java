@@ -4,6 +4,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
@@ -13,4 +14,10 @@ public interface ApiInterface {
 
     @POST("/login")
     Call<LoginClass> loginrequest(@Body LoginClass loginClass);
+
+    @POST("/booking/addbooking")
+    Call<BookingAddingResponse> SubmitDetails(@Body Booking booking);
+
+    @GET("/fetchallports/allports")
+    Call<List<LoginClass>> getAllports();
 }

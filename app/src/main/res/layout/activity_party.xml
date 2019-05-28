@@ -261,7 +261,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SUBMIT ENTRY"
+                    android:text="ENTER TRUCK DETAILS"
                     android:layout_weight="1"
                     android:onClick="submit"
                     android:textSize="10pt"

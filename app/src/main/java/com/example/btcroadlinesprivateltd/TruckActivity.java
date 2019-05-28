@@ -1,24 +1,40 @@
 package com.example.btcroadlinesprivateltd;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class TruckActivity extends AppCompatActivity {
+    ApiInterface apiInterface;
     TextView tno,lrnum,ownname,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,portname,banname,banbranch,acno,ifno,holdername;
     float rate=-1,weight=-1,cash=-1,diesel=-1,security=-1,dala=-1,comison=-1,bilti=-1,balance=-1,total=-1;
     String trucknum,ownerphone,lrnumber,ownername,bankname,branch,accountno,ifsccode,holname;
+
+    SharedPreferences sharedPreferences;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_truck);
+        sharedPreferences=this.getSharedPreferences("com.example.btcroadlinesprivateltd", Context.MODE_PRIVATE);
+
         tno=(TextView)findViewById(R.id.truck);
         lrnum=(TextView)findViewById(R.id.lrno);
         ownname=(TextView)findViewById(R.id.ownname);
@@ -40,6 +56,7 @@ public class TruckActivity extends AppCompatActivity {
         ifno=(TextView)findViewById(R.id.ifsccode);
         holdername=(TextView)findViewById(R.id.acountholdername);
         portname.setText("Port="+MainActivity.portname);
+        apiInterface=ApiClient.getClient().create(ApiInterface.class);
 
 
 
@@ -101,7 +118,13 @@ public class TruckActivity extends AppCompatActivity {
                     .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(TruckActivity.this, "you selected yes", Toast.LENGTH_SHORT).show();
+                            if (haveNetworkConnection()) {
+                                //Toast.makeText(TruckActivity.this, "you selected yes", Toast.LENGTH_SHORT).show();
+                                makeserverrequest();
+                            }
+                            else {
+                                Toast.makeText(TruckActivity.this, "No internet", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }).setNegativeButton("no",null).show();
 
@@ -112,6 +135,49 @@ public class TruckActivity extends AppCompatActivity {
 
 
     }
+
+    private void makeserverrequest() {
+        truckbd tbd=new truckbd(trucknum
+        ,lrnumber,ownerphone,accountno,ifsccode,weight,rate,cash,diesel,security,dala,comison,bilti,total,balance);
+        Booking booking=new Booking(MainActivity.portname,tbd,PartyActivity.pbd);
+        Call<BookingAddingResponse> call=apiInterface.SubmitDetails(booking);
+        call.enqueue(new Callback<BookingAddingResponse>() {
+            @Override
+            public void onResponse(Call<BookingAddingResponse> call, Response<BookingAddingResponse> response) {
+                if (response.body().ok==1)
+                {
+                    Toast.makeText(TruckActivity.this, "Submitted Suceessfully", Toast.LENGTH_SHORT).show();
+                    tno.setText("");
+                    lrnum.setText("");
+                    ownph.setText("");
+                    wiegh.setText("");
+                    ratee.setText("");
+                    cashp.setText("");
+                    desel.setText("");
+                    securityy.setText("");
+                    dalachar.setText("");
+                    comisn.setText("");
+                    bitichrge.setText("");
+                    totall.setText("");
+                    balancee.setText("");
+                    banname.setText("");
+                    banbranch.setText("");
+                    acno.setText("");
+                    holdername.setText("");
+                    ifno.setText("");
+                    PartyActivity.ResetFields();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BookingAddingResponse> call, Throwable t) {
+                Toast.makeText(TruckActivity.this, "Cannot submit,try again later", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
     public boolean validateInfo()
     {
         //float rate=0,weight=0,cash=0,diesel=0,security=0,dala=0,comison=0,bilti=0,balance=0,total;
@@ -175,5 +241,41 @@ public class TruckActivity extends AppCompatActivity {
         balancee.setText("Balance=" + Float.toString(balance));
         return true;
 
+    }
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mymenu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.logout)
+        {
+            sharedPreferences.edit().putString("portname","null").apply();
+            sharedPreferences.edit().putBoolean("status",false).apply();
+            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+        return false;
     }
 }
