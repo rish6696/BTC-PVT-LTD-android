@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin_activity">
+    tools:context=".Booking_Recview">
 
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recview">
+        android:id="@+id/bookingrecview">
 
     </android.support.v7.widget.RecyclerView>
 
     <ProgressBar
-        android:id="@+id/pbbar"
+        android:id="@+id/bookingpbbar"
         android:layout_width="130px"
         android:layout_height="130px"
         android:layout_marginStart="8dp"

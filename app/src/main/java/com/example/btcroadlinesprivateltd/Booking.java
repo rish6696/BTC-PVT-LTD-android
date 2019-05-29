@@ -1,13 +1,26 @@
 package com.example.btcroadlinesprivateltd;
 
 public class Booking {
-    String port;
-    truckbd tbd;
-    partybd pbd;
+    String port,date, time;
+    Truck truck;
+    Party party;
 
-    public Booking(String port, truckbd tbd, partybd pbd) {
+
+
+    public Booking(String port, Truck truck, Party party) {
         this.port = port;
-        this.tbd = tbd;
-        this.pbd = pbd;
+        this.truck = truck;
+        this.party = party;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "port='" + port + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", truck=" + truck +
+                ", party=" + party +
+                '}';
     }
 }

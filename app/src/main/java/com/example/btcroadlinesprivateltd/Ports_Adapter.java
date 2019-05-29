@@ -1,5 +1,6 @@
 package com.example.btcroadlinesprivateltd;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -44,6 +45,7 @@ public class Ports_Adapter extends RecyclerView.Adapter<Ports_Adapter.PortsHolde
         portsHolder.alphabet.setText(""+cc);
         portsHolder.alphabet.setBackgroundColor(Getcolour());
         portsHolder.portname.setText(name);
+        portsHolder.username=Portnames.get(i);
 
     }
 
@@ -60,11 +62,21 @@ public class Ports_Adapter extends RecyclerView.Adapter<Ports_Adapter.PortsHolde
     public class PortsHolder extends RecyclerView.ViewHolder{
 
         TextView alphabet,portname;
+        String username;
 
         public PortsHolder(@NonNull View itemView) {
             super(itemView);
             alphabet=(TextView)itemView.findViewById(R.id.portalphabet);
             portname=(TextView)itemView.findViewById(R.id.portname);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(v.getContext(),Booking_Recview.class);
+                    intent.putExtra("username",username);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

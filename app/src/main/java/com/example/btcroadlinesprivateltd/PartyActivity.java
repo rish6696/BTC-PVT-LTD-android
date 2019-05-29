@@ -7,19 +7,10 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.Serializable;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class PartyActivity extends AppCompatActivity  {
 
@@ -29,7 +20,7 @@ public class PartyActivity extends AppCompatActivity  {
      float rate=-1,weight=-1,cash=-1,diesel=-1,security=-1,balance=-1,total=-1,loadingcharge=-1;
      String partyphone,lrnumber,partyname,partyadress;
     SharedPreferences sharedPreferences;
-    static partybd pbd;
+    static Party pbd;
 
 
     @Override
@@ -153,7 +144,7 @@ public class PartyActivity extends AppCompatActivity  {
                     .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            pbd=new partybd(lrnumber,partyname,partyadress
+                            pbd=new Party(lrnumber,partyname,partyadress
                                     ,partyphone,weight,rate,loadingcharge,security,diesel,cash,total,balance
                             );
                             Intent intent=new Intent(getApplicationContext(),TruckActivity.class);

@@ -20,4 +20,7 @@ public interface ApiInterface {
 
     @GET("/fetchallports/allports")
     Call<List<LoginClass>> getAllports();
+
+    @POST("/fetchbookings")
+    Call<List<Booking>> getBookings(@Body LoginClass loginClass);
 }

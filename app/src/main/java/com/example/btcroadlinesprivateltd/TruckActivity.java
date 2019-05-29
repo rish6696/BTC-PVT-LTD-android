@@ -9,10 +9,10 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,11 +22,12 @@ import retrofit2.Response;
 
 public class TruckActivity extends AppCompatActivity {
     ApiInterface apiInterface;
-    TextView tno,lrnum,ownname,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,portname,banname,banbranch,acno,ifno,holdername;
+    TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,portname,banname,banbranch,acno,ifno,holdername;
     float rate=-1,weight=-1,cash=-1,diesel=-1,security=-1,dala=-1,comison=-1,bilti=-1,balance=-1,total=-1;
     String trucknum,ownerphone,lrnumber,ownername,bankname,branch,accountno,ifsccode,holname;
 
     SharedPreferences sharedPreferences;
+
 
 
     @Override
@@ -35,9 +36,11 @@ public class TruckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_truck);
         sharedPreferences=this.getSharedPreferences("com.example.btcroadlinesprivateltd", Context.MODE_PRIVATE);
 
+
+
         tno=(TextView)findViewById(R.id.truck);
         lrnum=(TextView)findViewById(R.id.lrno);
-        ownname=(TextView)findViewById(R.id.ownname);
+
         ownph=(TextView)findViewById(R.id.ownphone);
         wiegh=(TextView)findViewById(R.id.weight);
         ratee=(TextView)findViewById(R.id.rate);
@@ -72,7 +75,6 @@ public class TruckActivity extends AppCompatActivity {
         trucknum=tno.getText().toString();
         lrnumber=lrnum.getText().toString();
         ownerphone=ownph.getText().toString();
-        ownername=ownname.getText().toString();
         accountno=acno.getText().toString();
         ifsccode=ifno.getText().toString();
 
@@ -86,12 +88,6 @@ public class TruckActivity extends AppCompatActivity {
         {
             lrnum.setError("INVALID");
             lrnum.requestFocus();
-        }
-        else if (ownername.length()<=0)
-        {
-            ownname.setError("INVALID");
-            ownname.requestFocus();
-
         }
         else if(ownerphone.length()<=0)
         {
@@ -137,7 +133,11 @@ public class TruckActivity extends AppCompatActivity {
     }
 
     private void makeserverrequest() {
-        truckbd tbd=new truckbd(trucknum
+        final android.app.AlertDialog alertDialog = new android.app.AlertDialog.Builder(this).create();
+        ProgressBar pb = new ProgressBar(this);
+        alertDialog.setView(pb);
+        alertDialog.show();
+        Truck tbd=new Truck(trucknum
         ,lrnumber,ownerphone,accountno,ifsccode,weight,rate,cash,diesel,security,dala,comison,bilti,total,balance);
         Booking booking=new Booking(MainActivity.portname,tbd,PartyActivity.pbd);
         Call<BookingAddingResponse> call=apiInterface.SubmitDetails(booking);
@@ -146,6 +146,7 @@ public class TruckActivity extends AppCompatActivity {
             public void onResponse(Call<BookingAddingResponse> call, Response<BookingAddingResponse> response) {
                 if (response.body().ok==1)
                 {
+                    alertDialog.dismiss();
                     Toast.makeText(TruckActivity.this, "Submitted Suceessfully", Toast.LENGTH_SHORT).show();
                     tno.setText("");
                     lrnum.setText("");

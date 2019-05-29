@@ -1,10 +1,17 @@
 package com.example.btcroadlinesprivateltd;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +25,17 @@ public class Admin_activity extends AppCompatActivity {
     ArrayList<String> Portnames;
     ArrayList<String> uniqueids;
     ApiInterface apiInterface;
+    ProgressBar pb;
+    SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_activity);
+        sharedPreferences=this.getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+        pb=(ProgressBar)findViewById(R.id.pbbar);
+        pb.setVisibility(View.VISIBLE);
         recyclerView=(RecyclerView) findViewById(R.id.recview);
         Portnames=new ArrayList<>();
         uniqueids=new ArrayList<>();
@@ -41,9 +54,12 @@ public class Admin_activity extends AppCompatActivity {
             public void onResponse(Call<List<LoginClass>> call, Response<List<LoginClass>> response) {
                 for (int i=0;i<=response.body().size()-1;i++)
                 {
-                    uniqueids.add(response.body().get(i)._id);
-                    Portnames.add(response.body().get(i).username);
+                    if (!response.body().get(i).username.equals("admin")) {
+                        uniqueids.add(response.body().get(i)._id);
+                        Portnames.add(response.body().get(i).username);
+                    }
                 }
+                pb.setVisibility(View.INVISIBLE);
                 recyclerView.setLayoutManager(new LinearLayoutManager(Admin_activity.this));
                 recyclerView.setAdapter(new Ports_Adapter(Portnames,uniqueids));
                 recyclerView.addItemDecoration(new SpacesItemDecoration(10));
@@ -55,5 +71,25 @@ public class Admin_activity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mymenu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.logout)
+        {
+            sharedPreferences.edit().putString("portname","null").apply();
+            sharedPreferences.edit().putBoolean("status",false).apply();
+            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return false;
     }
 }
