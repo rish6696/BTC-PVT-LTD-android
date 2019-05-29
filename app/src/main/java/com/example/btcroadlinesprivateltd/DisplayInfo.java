@@ -71,8 +71,8 @@ public class DisplayInfo extends AppCompatActivity {
         psecurityy.setText(Booking_recview_Adapter.p.security+"");
         pdesel.setText(Booking_recview_Adapter.p.diesel+"");
         pcashp.setText(Booking_recview_Adapter.p.cash+"");
-        ptotall.setText(Booking_recview_Adapter.p.total+"");
-        pbalancee.setText(Booking_recview_Adapter.p.balance+"");
+        ptotall.setText("Total="+Booking_recview_Adapter.p.total+"");
+        pbalancee.setText("Balance="+Booking_recview_Adapter.p.balance+"");
     }
 
     private void setTruckinfo() {
