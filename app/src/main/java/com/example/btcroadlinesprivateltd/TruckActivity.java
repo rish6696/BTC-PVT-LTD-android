@@ -22,8 +22,8 @@ import retrofit2.Response;
 
 public class TruckActivity extends AppCompatActivity {
     ApiInterface apiInterface;
-    TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,portname,banname,banbranch,acno,ifno,holdername;
-    float rate=-1,weight=-1,cash=-1,diesel=-1,security=-1,dala=-1,comison=-1,bilti=-1,balance=-1,total=-1;
+    TextView tno,lrnum,ownph,wieghk,weightt,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,portname,banname,banbranch,acno,ifno,holdername;
+    float rate=-1,weighttn=-1,cash=-1,diesel=-1,security=-1,dala=-1,comison=-1,bilti=-1,balance=-1,total=-1,weightkg=0,weighttotal;
     String trucknum,ownerphone,lrnumber,ownername,bankname,branch,accountno,ifsccode,holname;
 
     SharedPreferences sharedPreferences;
@@ -42,7 +42,8 @@ public class TruckActivity extends AppCompatActivity {
         lrnum=(TextView)findViewById(R.id.lrno);
 
         ownph=(TextView)findViewById(R.id.ownphone);
-        wiegh=(TextView)findViewById(R.id.weight);
+        weightt=(TextView)findViewById(R.id.weighttn);
+        wieghk=(TextView)findViewById(R.id.weightkg);
         ratee=(TextView)findViewById(R.id.rate);
         cashp=(TextView)findViewById(R.id.cashpaid);
         desel=(TextView)findViewById(R.id.diesel);
@@ -110,7 +111,7 @@ public class TruckActivity extends AppCompatActivity {
         }
         else {
             new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Please check the details before confirming").setMessage("Truck no:"+trucknum+"\n"+"LR no:"+lrnumber+"\n"+"Owner name:"+ownername+"\n"+"Owner phno:"+ownerphone+"\n"+"Weight:"+weight+"\n"+"Rate:"+rate+"\n"+"Cash:"+cash+"\n"+"Diesel:"+diesel+"\n"+"Security:"+security+"\n"+"Dala charge:"+dala+"\n"+"Comission:"+comison+"\n"+"Bilti charge:"+bilti+"\n"+"Balance:"+balance+"\n"+"Accountno:"+accountno+"\n"+"IFSC:"+ifsccode)
+                    .setTitle("Please check the details before confirming").setMessage("Truck no:"+trucknum+"\n"+"LR no:"+lrnumber+"\n"+"Owner name:"+ownername+"\n"+"Owner phno:"+ownerphone+"\n"+"Weight:"+weighttn+"ton "+weightkg+"kg"+"\n"+"Rate:"+rate+"\n"+"Cash:"+cash+"\n"+"Diesel:"+diesel+"\n"+"Security:"+security+"\n"+"Dala charge:"+dala+"\n"+"Comission:"+comison+"\n"+"Bilti charge:"+bilti+"\n"+"Balance:"+balance+"\n"+"Accountno:"+accountno+"\n"+"IFSC:"+ifsccode)
                     .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -138,8 +139,10 @@ public class TruckActivity extends AppCompatActivity {
         alertDialog.setView(pb);
         alertDialog.show();
         Truck tbd=new Truck(trucknum
-        ,lrnumber,ownerphone,accountno,ifsccode,weight,rate,cash,diesel,security,dala,comison,bilti,total,balance);
-        Booking booking=new Booking(MainActivity.portname,tbd,PartyActivity.pbd);
+        ,lrnumber,ownerphone,accountno,ifsccode,weighttotal,rate,cash,diesel,security,dala,comison,bilti,total,balance);
+        TruckSecurity truckSecurity=new TruckSecurity(tbd.truckno,tbd.lrnum,tbd.security);
+        PartySecurity partySecurity=new PartySecurity(PartyActivity.pbd.lrnum,tbd.truckno,PartyActivity.pbd.security);
+        Booking booking=new Booking(MainActivity.portname,tbd,PartyActivity.pbd,truckSecurity,partySecurity,false);
         Call<BookingAddingResponse> call=apiInterface.SubmitDetails(booking);
         call.enqueue(new Callback<BookingAddingResponse>() {
             @Override
@@ -151,7 +154,8 @@ public class TruckActivity extends AppCompatActivity {
                     tno.setText("");
                     lrnum.setText("");
                     ownph.setText("");
-                    wiegh.setText("");
+                    weightt.setText("");
+                    wieghk.setText("");
                     ratee.setText("");
                     cashp.setText("");
                     desel.setText("");
@@ -184,36 +188,46 @@ public class TruckActivity extends AppCompatActivity {
         //float rate=0,weight=0,cash=0,diesel=0,security=0,dala=0,comison=0,bilti=0,balance=0,total;
 
         // Toast.makeText(this, ratee.getText().toString(), Toast.LENGTH_SHORT).show();
-        if (ratee.getText().length()==0||ratee.getText().equals("0.0")) {
+        if (ratee.getText().length()==0||ratee.getText().equals("0")) {
             ratee.setError("INVALID");
             ratee.requestFocus();
 
             return false;
         }
         rate = Float.parseFloat(ratee.getText().toString());
-        if (wiegh.getText().length()==0||wiegh.getText().equals("0.0")) {
-            wiegh.setError("INVALID");
-            wiegh.requestFocus();
+        if (weightt.getText().length()==0||weightt.getText().equals("0")) {
+            weightt.setError("INVALID");
+            weightt.requestFocus();
             return false;
 
         }
-        weight = Float.parseFloat(wiegh.getText().toString());
-        total=rate*weight;
+        weighttn = Float.parseFloat(weightt.getText().toString());
+        if (wieghk.getText().length()==0) {
+            weightkg=0;
+
+        }
+        else{
+            weightkg= Float.parseFloat(wieghk.getText().toString());
+
+        }
+        weighttotal=weighttn+(weightkg/1000);
+
+        total=rate*weighttotal;
         totall.setText("Total="+Float.toString(total));
-        if (cashp.getText().length()==0||cashp.getText().equals("0.0")) {
+        if (cashp.getText().length()==0||cashp.getText().equals("0")) {
             cashp.setError("INVALID");
             cashp.requestFocus();
              return false;
 
         }
         cash = Float.parseFloat(cashp.getText().toString());
-        if (desel.getText().length()==0||desel.getText().equals("0.0")) {
+        if (desel.getText().length()==0||desel.getText().equals("0")) {
             desel.setError("INVALID");
             desel.requestFocus();
             return false;
         }
         diesel = Float.parseFloat(desel.getText().toString());
-        if (securityy.getText().length()==0||securityy.getText().equals("0.0")) {
+        if (securityy.getText().length()==0||securityy.getText().equals("0")) {
             securityy.setError("INVALID");
             securityy.requestFocus();
             return false;
@@ -225,13 +239,13 @@ public class TruckActivity extends AppCompatActivity {
            return false;
         }
         dala = Float.parseFloat(dalachar.getText().toString());
-        if (comisn.getText().length()==0||comisn.getText().equals("0.0")) {
+        if (comisn.getText().length()==0||comisn.getText().equals("0")) {
             comisn.setError("INVALID");
             comisn.requestFocus();
            return false;
         }
         comison=Float.parseFloat(comisn.getText().toString());
-        if (bitichrge.getText().length()==0||bitichrge.getText().equals("0.0")) {
+        if (bitichrge.getText().length()==0||bitichrge.getText().equals("0")) {
             bitichrge.setError("INVALID");
             bitichrge.requestFocus();
 
@@ -275,6 +289,12 @@ public class TruckActivity extends AppCompatActivity {
             Intent intent=new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
             finish();
+
+        }
+        else if(item.getItemId()==R.id.history)
+        {
+            Intent intent=new Intent(getApplicationContext(),HistoryActivity.class);
+            startActivity(intent);
 
         }
         return false;

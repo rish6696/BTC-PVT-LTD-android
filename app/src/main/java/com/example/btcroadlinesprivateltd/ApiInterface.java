@@ -23,4 +23,7 @@ public interface ApiInterface {
 
     @POST("/fetchbookings")
     Call<List<Booking>> getBookings(@Body LoginClass loginClass);
+
+    @POST("/update")
+    Call<BookingAddingResponse> update(@Body Booking booking);
 }

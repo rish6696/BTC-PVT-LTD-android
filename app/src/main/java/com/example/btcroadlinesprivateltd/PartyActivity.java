@@ -16,8 +16,8 @@ public class PartyActivity extends AppCompatActivity  {
 
     ApiInterface apiInterface;
 
-    static TextView lrnum,pname,contactnumber,wiegh,ratee,cashp,desel,securityy,totall,balancee,portname,loadingc,padress;
-     float rate=-1,weight=-1,cash=-1,diesel=-1,security=-1,balance=-1,total=-1,loadingcharge=-1;
+    static TextView wieghk,weightt,lrnum,pname,contactnumber,ratee,cashp,desel,securityy,totall,balancee,portname,loadingc,padress;
+     float rate=-1,weighttn=-1,weightkg=0,weighttotal,cash=-1,diesel=-1,security=-1,balance=-1,total=-1,loadingcharge=-1;
      String partyphone,lrnumber,partyname,partyadress;
     SharedPreferences sharedPreferences;
     static Party pbd;
@@ -31,11 +31,12 @@ public class PartyActivity extends AppCompatActivity  {
         portname=(TextView)findViewById(R.id.port);
         portname.setText("Port="+MainActivity.portname);
         padress=(TextView)findViewById(R.id.partyadress);
+        weightt=(TextView)findViewById(R.id.weighttn);
+        wieghk=(TextView)findViewById(R.id.weightkg);
 
         lrnum=(TextView)findViewById(R.id.lrno);
         pname=(TextView)findViewById(R.id.partyname);
         contactnumber=(TextView)findViewById(R.id.partycontact);
-        wiegh=(TextView)findViewById(R.id.weight);
         ratee=(TextView)findViewById(R.id.rate);
         cashp=(TextView)findViewById(R.id.cashpaid);
         desel=(TextView)findViewById(R.id.diesel);
@@ -63,14 +64,23 @@ public class PartyActivity extends AppCompatActivity  {
             return false;
         }
         rate = Float.parseFloat(ratee.getText().toString());
-        if (wiegh.getText().length()==0||wiegh.getText().equals("0.0")) {
-            wiegh.setError("INVALID");
-            wiegh.requestFocus();
+        if (weightt.getText().length()==0||weightt.getText().equals("0")) {
+            weightt.setError("INVALID");
+            weightt.requestFocus();
             return false;
 
         }
-        weight = Float.parseFloat(wiegh.getText().toString());
-        total=rate*weight;
+        weighttn = Float.parseFloat(weightt.getText().toString());
+        if (wieghk.getText().length()==0) {
+            weightkg=0;
+
+        }
+        else{
+            weightkg= Float.parseFloat(wieghk.getText().toString());
+
+        }
+        weighttotal=weighttn+(weightkg/1000);
+        total=rate*weighttotal;
         totall.setText("Total="+Float.toString(total));
         if (cashp.getText().length()==0||cashp.getText().equals("0.0")) {
             cashp.setError("INVALID");
@@ -140,12 +150,12 @@ public class PartyActivity extends AppCompatActivity  {
         }
         else {
             new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Please check the details before filling Truck details").setMessage("LR no:"+lrnumber+"\n"+"Party name:"+partyname+"\n"+"Party Adress:"+partyadress+"\n"+"Party phno:"+partyphone+"\n"+"Weight:"+weight+"\n"+"Rate:"+rate+"\n"+"Cash:"+cash+"\n"+"Diesel:"+diesel+"\n"+"Security:"+security+"\n"+"Loading charge:"+loadingcharge+"\n"+"Balance:"+balance)
+                    .setTitle("Please check the details before filling Truck details").setMessage("LR no:"+lrnumber+"\n"+"Party name:"+partyname+"\n"+"Party Adress:"+partyadress+"\n"+"Party phno:"+partyphone+"\n"+"Weight:"+weighttn+"ton "+weightkg+"kg"+"\n"+"Rate:"+rate+"\n"+"Cash:"+cash+"\n"+"Diesel:"+diesel+"\n"+"Security:"+security+"\n"+"Loading charge:"+loadingcharge+"\n"+"Balance:"+balance)
                     .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             pbd=new Party(lrnumber,partyname,partyadress
-                                    ,partyphone,weight,rate,loadingcharge,security,diesel,cash,total,balance
+                                    ,partyphone,weighttotal,rate,loadingcharge,security,diesel,cash,total,balance
                             );
                             Intent intent=new Intent(getApplicationContext(),TruckActivity.class);
                             startActivity(intent);
@@ -162,7 +172,8 @@ public class PartyActivity extends AppCompatActivity  {
         pname.setText("");
         padress.setText("");
         contactnumber.setText("");
-        wiegh.setText("");
+        weightt.setText("");
+        wieghk.setText("");
         ratee.setText("");
         loadingc.setText("");
         securityy.setText("");
@@ -187,6 +198,12 @@ public class PartyActivity extends AppCompatActivity  {
             Intent intent=new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
             finish();
+
+        }
+        else if(item.getItemId()==R.id.history)
+        {
+            Intent intent=new Intent(getApplicationContext(),HistoryActivity.class);
+            startActivity(intent);
 
         }
         return false;

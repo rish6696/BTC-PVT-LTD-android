@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HistoryDisplay">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRUCK DETAILS"
+                android:textSize="15pt"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Truck No:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Truck No"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/truck"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LR No:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="LR No"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/lrno"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OWNER PHONE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="OWNER PHONE"
+                    android:textSize="10pt"
+                    android:inputType="phone"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/ownphone"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WEIGHT:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="WEIGHT"
+                    android:inputType="numberDecimal"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"
+                    android:id="@+id/weight"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RATE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="RATE"
+                    android:inputType="numberDecimal"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"
+                    android:id="@+id/rate"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CASH:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CASH PAID"
+                    android:inputType="number"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/cashpaid"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DIESEL:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DIESEL"
+                    android:inputType="number"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/diesel"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DALA:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DALA CHARGE"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/dalacharge"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SECURITY:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="SECURITY"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/security"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COMISSION:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="COMMISION"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/commision"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BILTY:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="BILTY CHARGE"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:inputType="number"
+                    android:id="@+id/biltycharge"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BANK NAME:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="BANK NAME"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/bankname"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BANK BRANCH:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="BANK BRANCH"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/bankbranch"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACOUNT NO:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ACOUNT NO"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/acountno"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACCOUNT HOLDER NAME:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="NAME"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/acountholdername"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IFSC NO:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="IFSC"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/ifsccode"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total="
+                android:textSize="10pt"
+                android:textColor="@android:color/black"
+                android:id="@+id/total"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Balance="
+                android:textSize="10pt"
+                android:id="@+id/balance"
+                android:textColor="@android:color/black"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PARTY DETAILS"
+                android:textSize="15pt"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LR No:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="LR No"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/plrno"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PARTY NAME:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="PARTY NAME"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/partyname"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PARTY ADRESS:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="PARTY ADRESS"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/partyadress"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTACT NO"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CONTACT NO"
+                    android:inputType="phone"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/partycontact"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WEIGHT:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="WEIGHT"
+                    android:inputType="numberDecimal"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"
+                    android:id="@+id/pweight"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RATE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="RATE"
+                    android:inputType="numberDecimal"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"
+                    android:id="@+id/prate"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CASH:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CASH PAID"
+                    android:inputType="number"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/pcashpaid"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SECURITY:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="SECURITY"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/psecurity"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOADING CHARGE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="loading charge"
+                    android:inputType="number"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/loadingcharge"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DIESEL CHARGE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DIESEL"
+                    android:inputType="number"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/pdiesel"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total="
+                android:textSize="10pt"
+                android:textColor="@android:color/black"
+                android:id="@+id/ptotal"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Balance="
+                android:textSize="10pt"
+                android:id="@+id/pbalance"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRUCK SECURITY"
+                android:textSize="15pt"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Truck No:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Truck No"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/trucknumbersecurity"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LR No:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="LR No"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/lrnotrucksecurity"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WEIGHT:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ton"
+                    android:inputType="numberDecimal"
+                    android:textSize="10pt"
+                    android:layout_weight="2"
+                    android:id="@+id/truckweighttn"/>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TDS:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter TDS"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/trucktds"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SECURITY:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="SECURITY"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/securitysecurity"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SHORTAGE CHARGE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="SHORTAGE:"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/truckmaterialshortage"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Frate Charge:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="MATERIAL FRATE:"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/truckmaterialfortage"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="To PAY="
+                android:textSize="10pt"
+                android:id="@+id/trucktopay"
+                android:textColor="@android:color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACOUNT NO:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ACOUNT NO"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/acountnosecurity"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACCOUNT HOLDER NAME:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="NAME"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/acountholdernametsecurity"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IFSC NO:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="IFSC"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/ifsccodetrucksecurity"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Party security"
+                android:id="@+id/epartysecurity"
+                android:textSize="10pt"
+                android:onClick="enterpartysecurity"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Truck security"
+                android:id="@+id/etrucksecurity"
+                android:textSize="10pt"
+                android:onClick="entertrucksecurity"/>
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </ScrollView>
+
+</android.support.v7.widget.LinearLayoutCompat>
