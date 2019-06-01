@@ -22,9 +22,9 @@ import retrofit2.Response;
 
 public class TruckActivity extends AppCompatActivity {
     ApiInterface apiInterface;
-    TextView tno,lrnum,ownph,wieghk,weightt,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,portname,banname,banbranch,acno,ifno,holdername;
+    TextView tno,lrnum,ownph,wieghk,weightt,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,portname,acno,ifno,holdername;
     float rate=-1,weighttn=-1,cash=-1,diesel=-1,security=-1,dala=-1,comison=-1,bilti=-1,balance=-1,total=-1,weightkg=0,weighttotal;
-    String trucknum,ownerphone,lrnumber,ownername,bankname,branch,accountno,ifsccode,holname;
+    String trucknum,ownerphone,lrnumber,ownername,accountno,ifsccode,holname;
 
     SharedPreferences sharedPreferences;
 
@@ -54,8 +54,6 @@ public class TruckActivity extends AppCompatActivity {
         totall=(TextView)findViewById(R.id.total);
         balancee=(TextView)findViewById(R.id.balance);
         portname=(TextView)findViewById(R.id.port);
-        banname=(TextView)findViewById(R.id.bankname);
-        banbranch=(TextView)findViewById(R.id.bankbranch);
         acno=(TextView)findViewById(R.id.acountno);
         ifno=(TextView)findViewById(R.id.ifsccode);
         holdername=(TextView)findViewById(R.id.acountholdername);
@@ -78,6 +76,7 @@ public class TruckActivity extends AppCompatActivity {
         ownerphone=ownph.getText().toString();
         accountno=acno.getText().toString();
         ifsccode=ifno.getText().toString();
+        holname=holdername.getText().toString();
 
         if(trucknum.length()<=0)
         {
@@ -105,13 +104,18 @@ public class TruckActivity extends AppCompatActivity {
             ifno.setError("INVALID");
             ifno.requestFocus();
         }
+        else if (holdername.length()<=0)
+        {
+            holdername.setError("INVALID");
+            holdername.requestFocus();
+        }
         else if (!validateInfo()){
 
 
         }
         else {
             new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Please check the details before confirming").setMessage("Truck no:"+trucknum+"\n"+"LR no:"+lrnumber+"\n"+"Owner name:"+ownername+"\n"+"Owner phno:"+ownerphone+"\n"+"Weight:"+weighttn+"ton "+weightkg+"kg"+"\n"+"Rate:"+rate+"\n"+"Cash:"+cash+"\n"+"Diesel:"+diesel+"\n"+"Security:"+security+"\n"+"Dala charge:"+dala+"\n"+"Comission:"+comison+"\n"+"Bilti charge:"+bilti+"\n"+"Balance:"+balance+"\n"+"Accountno:"+accountno+"\n"+"IFSC:"+ifsccode)
+                    .setTitle("Please check the details before confirming").setMessage("Truck no:"+trucknum+"\n"+"LR no:"+lrnumber+"\n"+"Owner phno:"+ownerphone+"\n"+"Weight:"+weighttn+"ton "+weightkg+"kg"+"\n"+"Rate:"+rate+"\n"+"Cash:"+cash+"\n"+"Diesel:"+diesel+"\n"+"Security:"+security+"\n"+"Dala charge:"+dala+"\n"+"Comission:"+comison+"\n"+"Bilti charge:"+bilti+"\n"+"Balance:"+balance+"\n"+"Accountno:"+accountno+"\n"+"IFSC:"+ifsccode+"\n"+"Holder name:"+holdername.getText().toString()+"\n")
                     .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -139,7 +143,7 @@ public class TruckActivity extends AppCompatActivity {
         alertDialog.setView(pb);
         alertDialog.show();
         Truck tbd=new Truck(trucknum
-        ,lrnumber,ownerphone,accountno,ifsccode,weighttotal,rate,cash,diesel,security,dala,comison,bilti,total,balance);
+        ,lrnumber,ownerphone,accountno,ifsccode,holname,weighttotal,rate,cash,diesel,security,dala,comison,bilti,total,balance);
         TruckSecurity truckSecurity=new TruckSecurity(tbd.truckno,tbd.lrnum,tbd.security);
         PartySecurity partySecurity=new PartySecurity(PartyActivity.pbd.lrnum,tbd.truckno,PartyActivity.pbd.security);
         Booking booking=new Booking(MainActivity.portname,tbd,PartyActivity.pbd,truckSecurity,partySecurity,false);
@@ -163,10 +167,8 @@ public class TruckActivity extends AppCompatActivity {
                     dalachar.setText("");
                     comisn.setText("");
                     bitichrge.setText("");
-                    totall.setText("");
-                    balancee.setText("");
-                    banname.setText("");
-                    banbranch.setText("");
+                    totall.setText("Total:");
+                    balancee.setText("Balance:");
                     acno.setText("");
                     holdername.setText("");
                     ifno.setText("");

@@ -18,9 +18,7 @@ import retrofit2.Response;
 public class Booking_Recview extends AppCompatActivity {
     ApiInterface apiInterface;
     String username;
-    ArrayList<String>date,time;
-    ArrayList<Truck>truckinfo;
-    ArrayList<Party>partyinfo;
+    ArrayList<Booking> bookings;
     RecyclerView recyclerView;
     ProgressBar pb;
 
@@ -30,10 +28,8 @@ public class Booking_Recview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking__recview);
         pb=(ProgressBar)findViewById(R.id.bookingpbbar);
-        truckinfo=new ArrayList<>();
-        partyinfo=new ArrayList<>();
-        date=new ArrayList<>();
-        time=new ArrayList<>();
+        bookings=new ArrayList<>();
+
 
         recyclerView=(RecyclerView)findViewById(R.id.bookingrecview);
         apiInterface=ApiClient.getClient().create(ApiInterface.class);
@@ -50,14 +46,11 @@ public class Booking_Recview extends AppCompatActivity {
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
                 for (int i=0;i<=response.body().size()-1;i++)
                 {
-                    date.add(response.body().get(i).date);
-                    time.add(response.body().get(i).time);
-                    truckinfo.add(response.body().get(i).truck);
-                    partyinfo.add(response.body().get(i).party);
+                    bookings.add(response.body().get(i));
                 }
                 pb.setVisibility(View.INVISIBLE);
                 recyclerView.setLayoutManager(new LinearLayoutManager(Booking_Recview.this));
-                recyclerView.setAdapter(new Booking_recview_Adapter(date,time,truckinfo,partyinfo));
+                recyclerView.setAdapter(new Booking_recview_Adapter(bookings));
                 recyclerView.addItemDecoration(new SpacesItemDecoration(10));
             }
 

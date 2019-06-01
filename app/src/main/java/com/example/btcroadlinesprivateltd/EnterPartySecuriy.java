@@ -16,7 +16,7 @@ import retrofit2.Response;
 
 public class EnterPartySecuriy extends AppCompatActivity {
 
-    TextView truckno,lrno,wieghk,weightt,security,topay,bankholder,accountno,ifsc,tds,materialshortage,materialfrate;
+    TextView truckno,lrno,wieghk,weightt,security,topay,tds,materialshortage,materialfrate;
     Button cal,submit;
     Booking booking;
     float wdiff,tdsval,frate,matreduc,weighttn=0,weightkg=0,weighttotal,payamnt;

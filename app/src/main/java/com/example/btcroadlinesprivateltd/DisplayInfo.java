@@ -3,19 +3,26 @@ package com.example.btcroadlinesprivateltd;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class DisplayInfo extends AppCompatActivity {
 
-    TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,banname,banbranch,acno,ifno,holdername;
+
+    Booking booking;
+
+    TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,acno,ifno,holdername;
     TextView plrnum,pname,contactnumber,pwiegh,pratee,pcashp,pdesel,psecurityy,ptotall,pbalancee,loadingc,padress;
+    TextView truckno,trucklrno,truckweightt,trucksecurity,trucktopay,bankholder,accountno,ifsc,trucktds,truckmaterialshortage,truckmaterialfrate;
+    TextView trucknopartty,lrno,weightt,securityparty,topay,tds,materialshortage,materialfrate;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_info);
-        Log.i("sachin tendulkar",Booking_recview_Adapter.t.toString());
+       booking=Booking_recview_Adapter.booking;
 
 
         tno=(TextView)findViewById(R.id.truck);
@@ -33,13 +40,11 @@ public class DisplayInfo extends AppCompatActivity {
         totall=(TextView)findViewById(R.id.total);
         balancee=(TextView)findViewById(R.id.balance);
 
-        banname=(TextView)findViewById(R.id.bankname);
-        banbranch=(TextView)findViewById(R.id.bankbranch);
+
+
         acno=(TextView)findViewById(R.id.acountno);
         ifno=(TextView)findViewById(R.id.ifsccode);
         holdername=(TextView)findViewById(R.id.acountholdername);
-
-
 
 
         padress=(TextView)findViewById(R.id.partyadress);
@@ -56,41 +61,102 @@ public class DisplayInfo extends AppCompatActivity {
         pbalancee=(TextView)findViewById(R.id.pbalance);
         loadingc=(TextView)findViewById(R.id.loadingcharge);
 
+
+
+
+
+        truckno=(TextView)findViewById(R.id.trucknumbersecurity);
+        trucklrno=(TextView)findViewById(R.id.lrnotrucksecurity);
+        truckweightt=(TextView)findViewById(R.id.truckweighttn);
+        trucksecurity=(TextView)findViewById(R.id.securitysecurity);
+        trucktopay=(TextView)findViewById(R.id.trucktopay);
+        bankholder=(TextView)findViewById(R.id.acountholdernametsecurity);
+        accountno=(TextView)findViewById(R.id.acountnosecurity);
+        ifsc=(TextView)findViewById(R.id.ifsccodetrucksecurity);
+        trucktds=(TextView)findViewById(R.id.trucktds);
+        truckmaterialshortage=(TextView)findViewById(R.id.truckmaterialshortage);
+        truckmaterialfrate=(TextView)findViewById(R.id.truckmaterialfortage);
+
+
+
+
+        trucknopartty=(TextView)findViewById(R.id.trucknoparty);
+        lrno=(TextView)findViewById(R.id.lrnoparty);
+        weightt=(TextView)findViewById(R.id.weighttn);
+        securityparty=(TextView)findViewById(R.id.securityparty);
+        topay=(TextView)findViewById(R.id.topayparty);
+        tds=(TextView)findViewById(R.id.tdsparty);
+        materialshortage=(TextView)findViewById(R.id.materialshortage);
+        materialfrate=(TextView)findViewById(R.id.materialfortage);
+
         setTruckinfo();
         setPartyinfo();
+        setTruckSecurity();
+        setPartySecurity();
+
+
+
+    }
+    private void setPartySecurity() {
+
+        Log.i("viratkohli",tds+"");
+
+        trucknopartty.setText(booking.truckSecurity.tno);
+        lrno.setText(booking.partySecurity.lrnum);
+        weightt.setText(booking.partySecurity.weight+"");
+        securityparty.setText(booking.partySecurity.security+"");
+        topay.setText("Paid Amount:"+booking.partySecurity.topay);
+        tds.setText(booking.partySecurity.tds+"");
+        materialfrate.setText(booking.partySecurity.fratecharges+"");
+        materialshortage.setText(booking.partySecurity.materialshortagecharges+"");
+    }
+
+    private void setTruckSecurity() {
+        truckno.setText(booking.truckSecurity.tno);
+        trucklrno.setText(booking.truckSecurity.lrnum);
+        truckweightt.setText(booking.truckSecurity.weight+"");
+        trucksecurity.setText(booking.truckSecurity.security+"");
+        trucktds.setText(booking.truckSecurity.Tds+"");
+        truckmaterialshortage.setText(booking.truckSecurity.materialshortage+"");
+        truckmaterialfrate.setText(booking.truckSecurity.fratecharge+"");
+        trucktopay.setText("Amount Paid:"+booking.truckSecurity.topay+"");
+        bankholder.setText(booking.truckSecurity.holdername);
+        accountno.setText(booking.truckSecurity.aacounum);
+        ifsc.setText(booking.truckSecurity.ifsc);
     }
 
     private void setPartyinfo() {
-        plrnum.setText(Booking_recview_Adapter.p.lrnum);
-        padress.setText(Booking_recview_Adapter.p.adress);
-        pname.setText(Booking_recview_Adapter.p.partyname);
-        contactnumber.setText(Booking_recview_Adapter.p.contact);
-        pwiegh.setText(Booking_recview_Adapter.p.weight+"");
-        pratee.setText(Booking_recview_Adapter.p.rate+"");
-        loadingc.setText(Booking_recview_Adapter.p.loadingcharge+"");
-        psecurityy.setText(Booking_recview_Adapter.p.security+"");
-        pdesel.setText(Booking_recview_Adapter.p.diesel+"");
-        pcashp.setText(Booking_recview_Adapter.p.cash+"");
-        ptotall.setText("Total="+Booking_recview_Adapter.p.total+"");
-        pbalancee.setText("Balance="+Booking_recview_Adapter.p.balance+"");
+        plrnum.setText(booking.party.lrnum);
+        padress.setText(booking.party.adress);
+        pname.setText(booking.party.partyname);
+        contactnumber.setText(booking.party.contact);
+        pwiegh.setText(booking.party.weight+"");
+        pratee.setText(booking.party.rate+"");
+        loadingc.setText(booking.party.loadingcharge+"");
+        psecurityy.setText(booking.party.security+"");
+        pdesel.setText(booking.party.diesel+"");
+        pcashp.setText(booking.party.cash+"");
+        ptotall.setText("Total="+booking.party.total+"");
+        pbalancee.setText("Balance="+booking.party.balance+"");
     }
 
     private void setTruckinfo() {
-        tno.setText(Booking_recview_Adapter.t.truckno);
-        lrnum.setText(Booking_recview_Adapter.t.lrnum);
-        ownph.setText(Booking_recview_Adapter.t.ownerph);
-        wiegh.setText(Booking_recview_Adapter.t.weight+"");
-        ratee.setText(Booking_recview_Adapter.t.rate+"");
-        cashp.setText(Booking_recview_Adapter.t.cash+"");
-        desel.setText(Booking_recview_Adapter.t.diesel+"");
-        securityy.setText(Booking_recview_Adapter.t.security+"");
-        dalachar.setText(Booking_recview_Adapter.t.dala+"");
-        comisn.setText(Booking_recview_Adapter.t.comisiion+"");
-        bitichrge.setText(Booking_recview_Adapter.t.bilty+"");
-        totall.setText("Total amount="+Booking_recview_Adapter.t.total+"");
-        balancee.setText("Balance="+Booking_recview_Adapter.t.balance+"");
-        acno.setText(Booking_recview_Adapter.t.accountno);
-        ifno.setText(Booking_recview_Adapter.t.ifsccode);
+        tno.setText(booking.truck.truckno);
+        lrnum.setText(booking.truck.lrnum);
+        ownph.setText(booking.truck.ownerph);
+        wiegh.setText(booking.truck.weight+"");
+        ratee.setText(booking.truck.rate+"");
+        cashp.setText(booking.truck.cash+"");
+        desel.setText(booking.truck.diesel+"");
+        securityy.setText(booking.truck.security+"");
+        dalachar.setText(booking.truck.dala+"");
+        comisn.setText(booking.truck.comisiion+"");
+        bitichrge.setText(booking.truck.bilty+"");
+        totall.setText("Total amount="+booking.truck.total+"");
+        balancee.setText("Balance="+booking.truck.balance+"");
+        acno.setText(booking.truck.accountno);
+        ifno.setText(booking.truck.ifsccode);
+        holdername.setText(booking.truck.holdername);
 
 
     }

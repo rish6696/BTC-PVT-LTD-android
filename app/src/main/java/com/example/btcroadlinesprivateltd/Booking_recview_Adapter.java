@@ -13,18 +13,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Booking_recview_Adapter extends RecyclerView.Adapter<Booking_recview_Adapter.Bookingholder> {
-    ArrayList<String> date,time;
-    ArrayList<Truck> truckinfo;
-    ArrayList<Party> partyinfo;
-    static Truck t;
-    static Party p;
+    ArrayList<Booking> bookings;
+    static Booking booking;
 
 
-    public Booking_recview_Adapter(ArrayList<String> date, ArrayList<String> time, ArrayList<Truck> truckinfo, ArrayList<Party> partyinfo) {
-        this.date = date;
-        this.time = time;
-        this.truckinfo = truckinfo;
-        this.partyinfo = partyinfo;
+    public Booking_recview_Adapter(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     @NonNull
@@ -38,7 +32,7 @@ public class Booking_recview_Adapter extends RecyclerView.Adapter<Booking_recvie
 
     @Override
     public void onBindViewHolder(@NonNull Bookingholder bookingholder, int i) {
-        String name=partyinfo.get(i).partyname;
+        String name=bookings.get(i).party.partyname;
         char cc=name.charAt(0);
         if (cc>=97&&cc<=122) {
             int v = cc - 32;
@@ -47,10 +41,9 @@ public class Booking_recview_Adapter extends RecyclerView.Adapter<Booking_recvie
         bookingholder.partyname.setText(name);
         bookingholder.alphabet.setText(""+cc);
         bookingholder.alphabet.setBackgroundColor(Getcolour());
-        bookingholder.dat.setText(date.get(i));
-        bookingholder.tim.setText(time.get(i));
-        bookingholder.party=partyinfo.get(i);
-        bookingholder.truck=truckinfo.get(i);
+        bookingholder.dat.setText(bookings.get(i).date);
+        bookingholder.tim.setText(bookings.get(i).time);
+        bookingholder.booking=bookings.get(i);
 
     }
     public int Getcolour(){
@@ -61,13 +54,12 @@ public class Booking_recview_Adapter extends RecyclerView.Adapter<Booking_recvie
 
     @Override
     public int getItemCount() {
-        return truckinfo.size();
+        return bookings.size();
     }
 
     public class Bookingholder extends RecyclerView.ViewHolder{
         TextView alphabet,dat,tim,partyname;
-        Truck truck;
-        Party party;
+        Booking booking;
 
 
         public Bookingholder(@NonNull View itemView) {
@@ -79,8 +71,7 @@ public class Booking_recview_Adapter extends RecyclerView.Adapter<Booking_recvie
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    t=truck;
-                    p=party;
+                    Booking_recview_Adapter.booking=booking;
                     Intent intent=new Intent(v.getContext(),DisplayInfo.class);
                     v.getContext().startActivity(intent);
                 }

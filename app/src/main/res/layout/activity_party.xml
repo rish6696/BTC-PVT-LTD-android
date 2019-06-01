@@ -152,6 +152,13 @@
                     android:id="@+id/rate"/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Total="
+                android:textSize="10pt"
+                android:textColor="@android:color/black"
+                android:id="@+id/total"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -242,13 +249,7 @@
 
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Total="
-                android:textSize="10pt"
-                android:textColor="@android:color/black"
-                android:id="@+id/total"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

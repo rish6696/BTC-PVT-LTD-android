@@ -18,8 +18,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TRUCK DETAILS"
-                android:textSize="15pt"
+                android:text="TRUCK ADVANCE DETAILS"
+                android:textSize="12pt"
                 android:textColor="@android:color/black"
                 android:layout_gravity="center"/>
 
@@ -250,44 +250,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BANK NAME:"
-                    android:textColor="@android:color/black"
-                    android:textSize="10pt"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="BANK NAME"
-                    android:textSize="10pt"
-                    android:inputType="text"
-                    android:textColor="@android:color/black"
-                    android:id="@+id/bankname"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="BANK BRANCH:"
-                    android:textColor="@android:color/black"
-                    android:textSize="10pt"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="BANK BRANCH"
-                    android:textSize="10pt"
-                    android:inputType="text"
-                    android:textColor="@android:color/black"
-                    android:id="@+id/bankbranch"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="ACOUNT NO:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
@@ -368,8 +330,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PARTY DETAILS"
-                android:textSize="15pt"
+                android:text="PARTY ADVANCE DETAILS"
+                android:textSize="12pt"
                 android:textColor="@android:color/black"
                 android:layout_gravity="center"/>
 
@@ -800,6 +762,174 @@
                     android:id="@+id/ifsccodetrucksecurity"/>
 
             </LinearLayout>
+
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PARTY SECURITY"
+                android:textSize="15pt"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Truck No:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Truck No"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/trucknoparty"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LR No:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="LR No"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/lrnoparty"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WEIGHT:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ton"
+                    android:inputType="numberDecimal"
+                    android:textSize="10pt"
+                    android:layout_weight="2"
+                    android:id="@+id/weighttn"/>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TDS:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter TDS"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/tdsparty"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SECURITY:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="SECURITY"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/securityparty"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SHORTAGE CHARGE:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="enter shortage charge:"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/materialshortage"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Frate Charge:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10pt"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/materialfortage"/>
+
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10pt"
+                android:inputType="number"
+                android:textColor="@android:color/black"
+                android:id="@+id/topayparty"/>
+
+
+
+
 
             <Button
                 android:layout_width="match_parent"

@@ -5,15 +5,17 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class HistoryDisplay extends AppCompatActivity {
 
-    TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,banname,banbranch,acno,ifno,holdername;
+    TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,acno,ifno,holdername;
     TextView plrnum,pname,contactnumber,pwiegh,pratee,pcashp,pdesel,psecurityy,ptotall,pbalancee,loadingc,padress;
-    TextView truckno,trucklrno,truckwieghk,truckweightt,trucksecurity,trucktopay,bankholder,accountno,ifsc,trucktds,truckmaterialshortage,truckmaterialfrate;
+    TextView truckno,trucklrno,truckweightt,trucksecurity,trucktopay,bankholder,accountno,ifsc,trucktds,truckmaterialshortage,truckmaterialfrate;
+    TextView trucknopartty,lrno,weightt,securityparty,topay,tds,materialshortage,materialfrate;
 
     Button psec,tsec;
     static Booking booking;
@@ -39,8 +41,8 @@ public class HistoryDisplay extends AppCompatActivity {
         totall=(TextView)findViewById(R.id.total);
         balancee=(TextView)findViewById(R.id.balance);
 
-        banname=(TextView)findViewById(R.id.bankname);
-        banbranch=(TextView)findViewById(R.id.bankbranch);
+
+
         acno=(TextView)findViewById(R.id.acountno);
         ifno=(TextView)findViewById(R.id.ifsccode);
         holdername=(TextView)findViewById(R.id.acountholdername);
@@ -95,9 +97,36 @@ public class HistoryDisplay extends AppCompatActivity {
         truckmaterialshortage=(TextView)findViewById(R.id.truckmaterialshortage);
         truckmaterialfrate=(TextView)findViewById(R.id.truckmaterialfortage);
 
+
+
+
+        trucknopartty=(TextView)findViewById(R.id.trucknoparty);
+        lrno=(TextView)findViewById(R.id.lrnoparty);
+        weightt=(TextView)findViewById(R.id.weighttn);
+        securityparty=(TextView)findViewById(R.id.securityparty);
+        topay=(TextView)findViewById(R.id.topayparty);
+        tds=(TextView)findViewById(R.id.tdsparty);
+        materialshortage=(TextView)findViewById(R.id.materialshortage);
+        materialfrate=(TextView)findViewById(R.id.materialfortage);
+
         setTruckinfo();
         setPartyinfo();
         setTruckSecurity();
+        setPartySecurity();
+    }
+
+    private void setPartySecurity() {
+
+        Log.i("viratkohli",tds+"");
+
+        trucknopartty.setText(booking.truckSecurity.tno);
+        lrno.setText(booking.partySecurity.lrnum);
+        weightt.setText(booking.partySecurity.weight+"");
+        securityparty.setText(booking.partySecurity.security+"");
+        topay.setText("Paid Amount:"+booking.partySecurity.topay);
+        tds.setText(booking.partySecurity.tds+"");
+        materialfrate.setText(booking.partySecurity.fratecharges+"");
+        materialshortage.setText(booking.partySecurity.materialshortagecharges+"");
     }
 
     private void setTruckSecurity() {
@@ -145,6 +174,7 @@ public class HistoryDisplay extends AppCompatActivity {
         balancee.setText("Balance="+booking.truck.balance+"");
         acno.setText(booking.truck.accountno);
         ifno.setText(booking.truck.ifsccode);
+        holdername.setText(booking.truck.holdername);
 
 
     }
