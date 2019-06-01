@@ -57,7 +57,16 @@ public class TruckActivity extends AppCompatActivity {
         acno=(TextView)findViewById(R.id.acountno);
         ifno=(TextView)findViewById(R.id.ifsccode);
         holdername=(TextView)findViewById(R.id.acountholdername);
-        portname.setText("Port="+MainActivity.portname);
+        portname.setText("OFFICE="+MainActivity.portname);
+        lrnumber=PartyActivity.lrnumber;
+        lrnum.setText(lrnumber);
+
+        weighttn=PartyActivity.weighttn;
+        weightt.setText(weighttn+"Ton");
+        weightkg=PartyActivity.weightkg;
+
+        wieghk.setText(weightkg+"kg");
+
         apiInterface=ApiClient.getClient().create(ApiInterface.class);
 
 
@@ -72,7 +81,6 @@ public class TruckActivity extends AppCompatActivity {
 
     public void submit(View view) {
         trucknum=tno.getText().toString();
-        lrnumber=lrnum.getText().toString();
         ownerphone=ownph.getText().toString();
         accountno=acno.getText().toString();
         ifsccode=ifno.getText().toString();
@@ -83,11 +91,6 @@ public class TruckActivity extends AppCompatActivity {
             tno.setError("INVALID");
             tno.requestFocus();
 
-        }
-        else if(lrnumber.length()<=0)
-        {
-            lrnum.setError("INVALID");
-            lrnum.requestFocus();
         }
         else if(ownerphone.length()<=0)
         {
@@ -168,7 +171,7 @@ public class TruckActivity extends AppCompatActivity {
                     comisn.setText("");
                     bitichrge.setText("");
                     totall.setText("Total:");
-                    balancee.setText("Balance:");
+                    balancee.setText("Acount Balance:");
                     acno.setText("");
                     holdername.setText("");
                     ifno.setText("");
@@ -197,25 +200,21 @@ public class TruckActivity extends AppCompatActivity {
             return false;
         }
         rate = Float.parseFloat(ratee.getText().toString());
-        if (weightt.getText().length()==0||weightt.getText().equals("0")) {
-            weightt.setError("INVALID");
-            weightt.requestFocus();
-            return false;
-
-        }
-        weighttn = Float.parseFloat(weightt.getText().toString());
-        if (wieghk.getText().length()==0) {
-            weightkg=0;
-
-        }
-        else{
-            weightkg= Float.parseFloat(wieghk.getText().toString());
-
-        }
         weighttotal=weighttn+(weightkg/1000);
 
         total=rate*weighttotal;
-        totall.setText("Total="+Float.toString(total));
+        if (total<=300000) {
+            totall.setText("Total=" + Float.toString(total));
+        }
+        else{
+            weightt.setError("INVALID");
+            weightt.requestFocus();
+            ratee.setError("INVALID");
+            ratee.requestFocus();
+            totall.setError("INVALID");
+            totall.requestFocus();
+            return false;
+        }
         if (cashp.getText().length()==0||cashp.getText().equals("0")) {
             cashp.setError("INVALID");
             cashp.requestFocus();
@@ -255,7 +254,7 @@ public class TruckActivity extends AppCompatActivity {
         }
         bilti = Float.parseFloat(bitichrge.getText().toString());
         balance=total-cash-diesel-security-dala-comison-bilti;
-        balancee.setText("Balance=" + Float.toString(balance));
+        balancee.setText("Account Balance=" + Float.toString(balance));
         return true;
 
     }

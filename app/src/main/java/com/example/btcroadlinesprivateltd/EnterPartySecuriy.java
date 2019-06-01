@@ -16,10 +16,10 @@ import retrofit2.Response;
 
 public class EnterPartySecuriy extends AppCompatActivity {
 
-    TextView truckno,lrno,wieghk,weightt,security,topay,tds,materialshortage,materialfrate;
+    TextView truckno,lrno,wieghk,weightt,security,topay,tds,materialshortage,materialfrate,recievingcgarge,wieghtdiff;
     Button cal,submit;
     Booking booking;
-    float wdiff,tdsval,frate,matreduc,weighttn=0,weightkg=0,weighttotal,payamnt;
+    float wdiff,tdsval,frate,matreduc,weighttn=0,weightkg=0,weighttotal,payamnt,reciechar;
     ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,10 @@ public class EnterPartySecuriy extends AppCompatActivity {
 
 
         booking=HistoryDisplay.booking;
+        recievingcgarge=(TextView) findViewById(R.id.recievingcharge);
         truckno=(TextView)findViewById(R.id.truck);
         lrno=(TextView)findViewById(R.id.lrno);
+        wieghtdiff=(TextView)findViewById(R.id.weightdiff);
         weightt=(TextView)findViewById(R.id.weighttn);
         wieghk=(TextView)findViewById(R.id.weightkg);
         security=(TextView)findViewById(R.id.security);
@@ -55,13 +57,14 @@ public class EnterPartySecuriy extends AppCompatActivity {
         if (validateinfo())
         {
 
-            payamnt=booking.truck.security-frate-matreduc-tdsval-400;
+            payamnt=booking.partySecurity.security-frate-matreduc-tdsval-reciechar;
             Log.i("sec",booking.truck.security+"");
             Log.i("frate",frate+"");
             Log.i("matred",matreduc+"");
             Log.i("tds",tdsval+"");
 
             topay.setText("To Pay="+payamnt);
+            wieghtdiff.setText(""+wdiff+"Ton");
 
 
         }
@@ -91,6 +94,8 @@ public class EnterPartySecuriy extends AppCompatActivity {
         booking.partySecurity.fratecharges=frate;
         booking.partySecurity.topay=payamnt;
         booking.partySecurity.status=true;
+        booking.partySecurity.recievingcharge=reciechar;
+        booking.partySecurity.weightdiff=wdiff;
         if (booking.truckSecurity.status)
         {
             booking.status=true;
@@ -104,6 +109,7 @@ public class EnterPartySecuriy extends AppCompatActivity {
                 if (response.body().ok==1)
                 {
                     startActivity(new Intent(getApplicationContext(),HistoryActivity.class));
+                    finish();
                 }
             }
 
@@ -141,6 +147,22 @@ public class EnterPartySecuriy extends AppCompatActivity {
         }
         else{
             tdsval=Float.parseFloat(tds.getText().toString());
+
+        }
+        if (tds.getText().length()==0)
+        {
+            tdsval=0;
+        }
+        else{
+            tdsval=Float.parseFloat(tds.getText().toString());
+
+        }
+        if (recievingcgarge.getText().length()==0)
+        {
+            reciechar=0;
+        }
+        else{
+            reciechar=Float.parseFloat(recievingcgarge.getText().toString());
 
         }
         if (TextUtils.isEmpty(materialshortage.getText()))

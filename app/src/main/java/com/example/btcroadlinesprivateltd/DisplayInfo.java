@@ -13,7 +13,7 @@ public class DisplayInfo extends AppCompatActivity {
 
     TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,acno,ifno,holdername;
     TextView plrnum,pname,contactnumber,pwiegh,pratee,pcashp,pdesel,psecurityy,ptotall,pbalancee,loadingc,padress;
-    TextView truckno,trucklrno,truckweightt,trucksecurity,trucktopay,bankholder,accountno,ifsc,trucktds,truckmaterialshortage,truckmaterialfrate;
+    TextView truckno,trucklrno,truckweightt,trucksecurity,trucktopay,bankholder,accountno,ifsc,trucktds,truckmaterialshortage,truckmaterialfrate,recievingcgarge;
     TextView trucknopartty,lrno,weightt,securityparty,topay,tds,materialshortage,materialfrate;
 
 
@@ -88,6 +88,7 @@ public class DisplayInfo extends AppCompatActivity {
         tds=(TextView)findViewById(R.id.tdsparty);
         materialshortage=(TextView)findViewById(R.id.materialshortage);
         materialfrate=(TextView)findViewById(R.id.materialfortage);
+        recievingcgarge=(TextView) findViewById(R.id.recievingcharge);
 
         setTruckinfo();
         setPartyinfo();
@@ -109,6 +110,7 @@ public class DisplayInfo extends AppCompatActivity {
         tds.setText(booking.partySecurity.tds+"");
         materialfrate.setText(booking.partySecurity.fratecharges+"");
         materialshortage.setText(booking.partySecurity.materialshortagecharges+"");
+        recievingcgarge.setText(booking.partySecurity.recievingcharge+"");
     }
 
     private void setTruckSecurity() {

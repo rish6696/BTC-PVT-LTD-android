@@ -16,7 +16,7 @@ import retrofit2.Response;
 
 public class EnterTruckSecurityB extends AppCompatActivity {
 
-    TextView truckno,lrno,wieghk,weightt,security,topay,bankholder,accountno,ifsc,tds,materialshortage,materialfrate;
+    TextView truckno,lrno,wieghk,weightt,security,topay,bankholder,accountno,ifsc,tds,materialshortage,materialfrate,weightdiff;
     Button cal,submit;
     Booking booking;
     float wdiff,tdsval,frate,matreduc,weighttn=0,weightkg=0,weighttotal,payamnt;
@@ -30,6 +30,7 @@ public class EnterTruckSecurityB extends AppCompatActivity {
         booking=HistoryDisplay.booking;
         truckno=(TextView)findViewById(R.id.truck);
         lrno=(TextView)findViewById(R.id.lrno);
+        weightdiff=(TextView)findViewById(R.id.weightdiff);
         weightt=(TextView)findViewById(R.id.weighttn);
         wieghk=(TextView)findViewById(R.id.weightkg);
         security=(TextView)findViewById(R.id.security);
@@ -78,6 +79,7 @@ public class EnterTruckSecurityB extends AppCompatActivity {
            materialfrate.setText(frate+"");
            payamnt=booking.truck.security-frate-matreduc-tdsval-400;
            topay.setText("To Pay="+payamnt);
+           weightdiff.setText(""+wdiff+"Ton");
 
 
        }
@@ -143,6 +145,7 @@ public class EnterTruckSecurityB extends AppCompatActivity {
                 if (response.body().ok==1)
                 {
                     startActivity(new Intent(getApplicationContext(),HistoryActivity.class));
+                    finish();
                 }
             }
 

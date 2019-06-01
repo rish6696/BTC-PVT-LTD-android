@@ -54,7 +54,7 @@ public class Admin_activity extends AppCompatActivity {
             public void onResponse(Call<List<LoginClass>> call, Response<List<LoginClass>> response) {
                 for (int i=0;i<=response.body().size()-1;i++)
                 {
-                    if (!response.body().get(i).username.equals("admin")) {
+                    if (!response.body().get(i).username.equals("faridabadhr")) {
                         uniqueids.add(response.body().get(i)._id);
                         Portnames.add(response.body().get(i).username);
                     }
@@ -76,7 +76,7 @@ public class Admin_activity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mymenu,menu);
+        getMenuInflater().inflate(R.menu.adminmenu,menu);
         return super.onCreateOptionsMenu(menu);
     }
 

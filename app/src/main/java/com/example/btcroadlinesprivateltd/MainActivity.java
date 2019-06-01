@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         status=sharedPreferences.getBoolean("status",false);
         if (status)
         {
-            if (portname.equals("admin"))
+            if (portname.equals("faridabadhr"))
             {
                 Intent intent = new Intent(getApplicationContext(), Admin_activity.class);
                 startActivity(intent);
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                             portname = response.body().username;
                             sharedPreferences.edit().putString("portname", portname).apply();
                             sharedPreferences.edit().putBoolean("status", status).apply();
-                            if (portname.equals("admin"))
+                            if (portname.equals("faridabadhr"))
                             {
                                 Intent intent = new Intent(getApplicationContext(), Admin_activity.class);
                                 startActivity(intent);

@@ -17,8 +17,8 @@ public class PartyActivity extends AppCompatActivity  {
     ApiInterface apiInterface;
 
     static TextView wieghk,weightt,lrnum,pname,contactnumber,ratee,cashp,desel,securityy,totall,balancee,portname,loadingc,padress;
-     float rate=-1,weighttn=-1,weightkg=0,weighttotal,cash=-1,diesel=-1,security=-1,balance=-1,total=-1,loadingcharge=-1;
-     String partyphone,lrnumber,partyname,partyadress;
+     static float rate=-1,weighttn=-1,weightkg=0,weighttotal,cash=-1,diesel=-1,security=-1,balance=-1,total=-1,loadingcharge=-1;
+     static String partyphone,lrnumber,partyname,partyadress;
     SharedPreferences sharedPreferences;
     static Party pbd;
 
@@ -81,7 +81,18 @@ public class PartyActivity extends AppCompatActivity  {
         }
         weighttotal=weighttn+(weightkg/1000);
         total=rate*weighttotal;
-        totall.setText("Total="+Float.toString(total));
+        if (total<=300000) {
+            totall.setText("Total=" + Float.toString(total));
+        }
+        else {
+            weightt.setError("INVALID");
+            weightt.requestFocus();
+            ratee.setText("INVALID");
+            ratee.requestFocus();
+            totall.setError("INVALID");
+            totall.requestFocus();
+            return false;
+        }
         if (cashp.getText().length()==0||cashp.getText().equals("0.0")) {
             cashp.setError("INVALID");
             cashp.requestFocus();
@@ -179,8 +190,8 @@ public class PartyActivity extends AppCompatActivity  {
         securityy.setText("");
         desel.setText("");
         cashp.setText("");
-        totall.setText("");
-        balancee.setText("");
+        totall.setText("Total:");
+        balancee.setText("Account Balance:");
     }
 
     @Override

@@ -15,7 +15,8 @@ public class HistoryDisplay extends AppCompatActivity {
     TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,acno,ifno,holdername;
     TextView plrnum,pname,contactnumber,pwiegh,pratee,pcashp,pdesel,psecurityy,ptotall,pbalancee,loadingc,padress;
     TextView truckno,trucklrno,truckweightt,trucksecurity,trucktopay,bankholder,accountno,ifsc,trucktds,truckmaterialshortage,truckmaterialfrate;
-    TextView trucknopartty,lrno,weightt,securityparty,topay,tds,materialshortage,materialfrate;
+    TextView trucknopartty,lrno,weightt,securityparty,topay,tds,materialshortage,materialfrate,recievingcgarge;
+
 
     Button psec,tsec;
     static Booking booking;
@@ -108,6 +109,7 @@ public class HistoryDisplay extends AppCompatActivity {
         tds=(TextView)findViewById(R.id.tdsparty);
         materialshortage=(TextView)findViewById(R.id.materialshortage);
         materialfrate=(TextView)findViewById(R.id.materialfortage);
+        recievingcgarge=(TextView) findViewById(R.id.recievingcharge);
 
         setTruckinfo();
         setPartyinfo();
@@ -127,6 +129,7 @@ public class HistoryDisplay extends AppCompatActivity {
         tds.setText(booking.partySecurity.tds+"");
         materialfrate.setText(booking.partySecurity.fratecharges+"");
         materialshortage.setText(booking.partySecurity.materialshortagecharges+"");
+        recievingcgarge.setText(booking.partySecurity.recievingcharge+"");
     }
 
     private void setTruckSecurity() {
@@ -181,6 +184,7 @@ public class HistoryDisplay extends AppCompatActivity {
 
     public void enterpartysecurity(View view) {
         startActivity(new Intent(getApplicationContext(),EnterPartySecuriy.class));
+        finish();
     }
 
     public void entertrucksecurity(View view) {
@@ -192,6 +196,7 @@ public class HistoryDisplay extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
 
                         startActivity(new Intent(getApplicationContext(),EnterTrucksecurityAfter.class));
+                        finish();
 
 
 
@@ -202,6 +207,7 @@ public class HistoryDisplay extends AppCompatActivity {
 
                 Intent intent=new Intent(getApplicationContext(),EnterTruckSecurityB.class);
                 startActivity(intent);
+               finish();
 
             }
         }).show();
