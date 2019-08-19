@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.btcroadlinesprivateltd">
+    package="com.Btc.btcroadlinesprivateltd">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/btctruck"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EnterPartySecuriy"></activity>
-        <activity android:name=".EnterTrucksecurityAfter" />
-        <activity android:name=".EnterTruckSecurityB" />
-        <activity android:name=".HistoryDisplay" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".DisplayInfo" />
-        <activity android:name=".Booking_Recview" />
-        <activity android:name=".Admin_activity" />
-        <activity android:name=".PartyActivity" />
-        <activity android:name=".TruckActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.Btc.btcroadlinesprivateltd.EnterPartySecuriy"></activity>
+        <activity android:name="com.Btc.btcroadlinesprivateltd.EnterTrucksecurityAfter" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.EnterTruckSecurityB" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.HistoryDisplay" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.HistoryActivity" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.DisplayInfo" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.Booking_Recview" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.Admin_activity" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.PartyActivity" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.TruckActivity" />
+        <activity android:name="com.Btc.btcroadlinesprivateltd.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

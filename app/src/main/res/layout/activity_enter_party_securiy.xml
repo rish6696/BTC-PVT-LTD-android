@@ -68,7 +68,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WEIGHT:"
+                    android:text="Unloading weight:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
                 <EditText
@@ -137,7 +137,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recieving Charge:"
+                    android:text="Office Charge:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
                 <EditText

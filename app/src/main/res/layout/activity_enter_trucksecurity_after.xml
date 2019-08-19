@@ -68,7 +68,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WEIGHT:"
+                    android:text="Unloading weight:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
                 <EditText
@@ -197,7 +197,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recieving Charges:"
+                    android:text="Office Charges:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
                 <TextView
@@ -205,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="10pt"
                     android:inputType="number"
-                    android:text="100"
+                    android:text="300"
                     android:textColor="@android:color/black"
                     android:id="@+id/recieving"/>
 
@@ -257,6 +257,25 @@
                 android:textSize="10pt"
                 android:id="@+id/topay"
                 android:textColor="@android:color/black"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REMARK:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="remarks"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/remarks"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

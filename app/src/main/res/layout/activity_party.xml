@@ -75,17 +75,35 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PARTY ADRESS:"
+                    android:text="Loading Adress:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="PARTY ADRESS"
+                    android:hint="loading adress"
                     android:textSize="10pt"
                     android:inputType="text"
-                    android:id="@+id/partyadress"/>
+                    android:id="@+id/loadingadress"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unloading Adress:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Unloading adress"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:id="@+id/unloadingadress"/>
             </LinearLayout>
 
             <LinearLayout

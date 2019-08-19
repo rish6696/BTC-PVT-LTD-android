@@ -60,6 +60,42 @@
                     android:textColor="@android:color/black"
                     android:id="@+id/lrno"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Challan Number:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Challan No"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/challannumber"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RC Name:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="RC Name"
+                    android:textSize="10pt"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/rcname"/>
+            </LinearLayout>
 
 
 
@@ -380,18 +416,37 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PARTY ADRESS:"
+                    android:text="LOADING ADRESS:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="PARTY ADRESS"
+                    android:hint="loading adress"
                     android:textSize="10pt"
                     android:inputType="text"
                     android:textColor="@android:color/black"
-                    android:id="@+id/partyadress"/>
+                    android:id="@+id/loadingadress"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UNLOADING ADRESS:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="unloading adress"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/unloadingadress"/>
             </LinearLayout>
 
             <LinearLayout
@@ -599,7 +654,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WEIGHT:"
+                    android:text="Unloading Weight:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
                 <TextView
@@ -720,7 +775,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recieving Charges:"
+                    android:text="Office Charges:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
                 <TextView
@@ -800,6 +855,25 @@
                     android:id="@+id/ifsccodetrucksecurity"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remarks:"
+                    android:textColor="@android:color/black"
+                    android:textSize="10pt"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Remarks"
+                    android:textSize="10pt"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/remarks"/>
+
+            </LinearLayout>
 
 
 
@@ -859,7 +933,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WEIGHT:"
+                    android:text="Unloading weight:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
                 <TextView
@@ -962,13 +1036,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recieving Charge:"
+                    android:text="Office Charge:"
                     android:textColor="@android:color/black"
                     android:textSize="10pt"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="recieving charge"
                     android:textSize="10pt"
                     android:inputType="number"
                     android:textColor="@android:color/black"
