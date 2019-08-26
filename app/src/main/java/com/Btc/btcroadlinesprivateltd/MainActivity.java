@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     static Boolean status;
     ApiInterface apiInterface;
     ProgressBar progressBar;
-    private static String[] officenames={"faridabad","alwar","kankroli","morbi","bombay","vishakapatnam","jharsokra","raigarh","raipur","hodfaridabad"};
+    private static String[] officenames={"faridabad","vishakapatnam","jharsukda","raigarh","raipur","hodfaridabad","angul","nagpur"};
 
 
 
