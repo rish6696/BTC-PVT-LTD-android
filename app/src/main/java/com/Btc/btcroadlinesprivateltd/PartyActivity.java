@@ -16,7 +16,7 @@ public class PartyActivity extends AppCompatActivity  {
 
     ApiInterface apiInterface;
 
-    static TextView wieghk,weightt,lrnum,pname,contactnumber,ratee,cashp,desel,securityy,totall,balancee,portname,loadingc,loadadress,unloadaress;
+    static TextView wieghk,weightt,lrnum,pname,ratee,cashp,desel,securityy,totall,balancee,portname,loadingc,loadadress,unloadaress;
      static float rate=-1,weighttn=-1,weightkg=0,weighttotal,cash=-1,diesel=-1,security=-1,balance=-1,total=-1,loadingcharge=-1;
      static String partyphone,lrnumber,partyname,loadingadress,unloadingdress;
     SharedPreferences sharedPreferences;
@@ -37,7 +37,6 @@ public class PartyActivity extends AppCompatActivity  {
 
         lrnum=(TextView)findViewById(R.id.lrno);
         pname=(TextView)findViewById(R.id.partyname);
-        contactnumber=(TextView)findViewById(R.id.partycontact);
         ratee=(TextView)findViewById(R.id.rate);
         cashp=(TextView)findViewById(R.id.cashpaid);
         desel=(TextView)findViewById(R.id.diesel);
@@ -130,7 +129,6 @@ public class PartyActivity extends AppCompatActivity  {
     public void submit(View view) {
 
         lrnumber=lrnum.getText().toString();
-        partyphone=contactnumber.getText().toString();
         partyname=pname.getText().toString();
         loadingadress=loadadress.getText().toString();
         unloadingdress=unloadaress.getText().toString();
@@ -141,16 +139,10 @@ public class PartyActivity extends AppCompatActivity  {
             lrnum.setError("INVALID");
             lrnum.requestFocus();
         }
-        else if (partyname.length()<=0)
-        {
+        else if (partyname.length()<=0) {
             pname.setError("INVALID");
             pname.requestFocus();
 
-        }
-        else if(partyphone.length()<=0)
-        {
-            contactnumber.setError("INVALID");
-            contactnumber.requestFocus();
         }
         else if(unloadingdress.length()<=0)
         {
@@ -173,7 +165,7 @@ public class PartyActivity extends AppCompatActivity  {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             pbd=new Party(lrnumber,partyname,loadingadress,unloadingdress
-                                    ,partyphone,weighttotal,rate,loadingcharge,security,diesel,cash,total,balance
+                                    ,weighttotal,rate,loadingcharge,security,diesel,cash,total,balance
                             );
                             Intent intent=new Intent(getApplicationContext(),TruckActivity.class);
                             startActivity(intent);
@@ -190,7 +182,6 @@ public class PartyActivity extends AppCompatActivity  {
         pname.setText("");
         loadadress.setText("");
         unloadaress.setText("");
-        contactnumber.setText("");
         weightt.setText("");
         wieghk.setText("");
         ratee.setText("");

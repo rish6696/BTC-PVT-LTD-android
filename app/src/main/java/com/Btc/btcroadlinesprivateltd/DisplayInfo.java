@@ -11,7 +11,7 @@ public class DisplayInfo extends AppCompatActivity {
     Booking booking;
 
     TextView tno,lrnum,ownph,wiegh,ratee,cashp,desel,securityy,dalachar,comisn,bitichrge,totall,balancee,acno,ifno,holdername,chllannumber,rcname;
-    TextView plrnum,pname,contactnumber,pwiegh,pratee,pcashp,pdesel,psecurityy,ptotall,pbalancee,loadingc,loadingadress,unloadingadress;
+    TextView plrnum,pname,pwiegh,pratee,pcashp,pdesel,psecurityy,ptotall,pbalancee,loadingc,loadingadress,unloadingadress;
     TextView truckno,trucklrno,truckweightt,trucksecurity,trucktopay,bankholder,accountno,ifsc,trucktds,truckmaterialshortage,truckmaterialfrate,recievingcgarge,remarks;
     TextView trucknopartty,lrno,weightt,securityparty,topay,tds,materialshortage,materialfrate;
 
@@ -53,7 +53,6 @@ public class DisplayInfo extends AppCompatActivity {
 
         plrnum=(TextView)findViewById(R.id.plrno);
         pname=(TextView)findViewById(R.id.partyname);
-        contactnumber=(TextView)findViewById(R.id.partycontact);
         pwiegh=(TextView)findViewById(R.id.pweight);
         pratee=(TextView)findViewById(R.id.prate);
         pcashp=(TextView)findViewById(R.id.pcashpaid);
@@ -135,7 +134,6 @@ public class DisplayInfo extends AppCompatActivity {
         loadingadress.setText(booking.partyAdvance.loadadress);
         unloadingadress.setText(booking.partyAdvance.unloadadress);
         pname.setText(booking.partyAdvance.partyname);
-        contactnumber.setText(booking.partyAdvance.contact);
         pwiegh.setText(booking.partyAdvance.weight+"");
         pratee.setText(booking.partyAdvance.rate+"");
         loadingc.setText(booking.partyAdvance.loadingcharge+"");

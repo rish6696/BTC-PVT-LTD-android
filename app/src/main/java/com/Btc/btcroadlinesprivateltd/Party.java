@@ -1,15 +1,14 @@
 package com.Btc.btcroadlinesprivateltd;
 
 public class Party {
-    String lrnum,partyname,loadadress,unloadadress,contact;
+    String lrnum,partyname,loadadress,unloadadress;
     float weight,rate,loadingcharge,security,diesel,cash,total,balance;
 
-    public Party(String lrnum, String partyname, String loadadress, String unloadadress, String contact, float weight, float rate, float loadingcharge, float security, float diesel, float cash, float total, float balance) {
+    public Party(String lrnum, String partyname, String loadadress, String unloadadress, float weight, float rate, float loadingcharge, float security, float diesel, float cash, float total, float balance) {
         this.lrnum = lrnum;
         this.partyname = partyname;
         this.loadadress = loadadress;
         this.unloadadress = unloadadress;
-        this.contact = contact;
         this.weight = weight;
         this.rate = rate;
         this.loadingcharge = loadingcharge;
@@ -27,7 +26,6 @@ public class Party {
                 ", partyname='" + partyname + '\'' +
                 ", loadadress='" + loadadress + '\'' +
                 ", unloadadress='" + unloadadress + '\'' +
-                ", contact='" + contact + '\'' +
                 ", weight=" + weight +
                 ", rate=" + rate +
                 ", loadingcharge=" + loadingcharge +
